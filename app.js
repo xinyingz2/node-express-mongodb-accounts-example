@@ -14,12 +14,12 @@ var app = express();
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
-const { PORT, HOST, PROTOCOL, DB } = require("./config/config");
+const { PORT, HOST, PROTOCOL, DB, SECRET } = require("./config/config");
 
 app.use(
   session({
     name: "sid",
-    secret: "atguigu",
+    secret: SECRET,
     saveUninitialized: false,
     resave: true,
     store: MongoStore.create({

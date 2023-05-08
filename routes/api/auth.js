@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 // const moment = require("moment");
 const UserModel = require("../../models/UserModel");
 const md5 = require("md5");
-const { secret } = require("../../config/config");
+const { SECRET } = require("../../config/config");
 var router = express.Router();
 
 router.post("/login", function (req, res, next) {
@@ -23,7 +23,7 @@ router.post("/login", function (req, res, next) {
       const { username, _id } = data;
       // create token
       //   jwt.sign({username: })
-      const token = jwt.sign({ username, _id }, secret, {
+      const token = jwt.sign({ username, _id }, SECRET, {
         expiresIn: 60 * 60 * 24 * 7,
       });
       // send token

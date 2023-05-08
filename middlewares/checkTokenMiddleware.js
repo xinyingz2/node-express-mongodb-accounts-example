@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { secret } = require("../config/config");
+const { SECRET } = require("../config/config");
 module.exports = (req, res, next) => {
   //get token
   const token = req.get("token"); //token:xxxx in headers
@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     });
   }
 
-  jwt.verify(token, secret, (err, data) => {
+  jwt.verify(token, SECRET, (err, data) => {
     if (err) {
       return res.json({
         code: "2004",
